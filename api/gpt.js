@@ -1,21 +1,7 @@
-import dotenv from 'dotenv';
 import OpenAI from 'openai';
-import { fileURLToPath } from 'url';
-import { dirname, resolve } from 'path';
 
-// Determine the current directory
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-// Configure dotenv
-dotenv.config({ path: resolve(__dirname, '../.env') });
-
-
-// Set up OpenAI configuration
 const openai = new OpenAI({
-    organization: process.env.organization,
-    project: process.env.project,
-    apiKey: process.env.APIKEY,
+    apiKey: process.env.OPENAI_API_KEY,  // Use the environment variable defined in Vercel
 });
 
 export async function sendPrompt(content) {
