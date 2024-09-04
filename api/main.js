@@ -1,5 +1,5 @@
 import chromium from 'chrome-aws-lambda';  // Use chrome-aws-lambda for Vercel
-import { sendPrompt } from './gpt.js';     // Import your GPT function
+// import { sendPrompt } from './gpt.js';     // Import your GPT function
 
 export default async function handler(req, res) {
   // Set CORS headers (if needed)
@@ -77,7 +77,7 @@ export default async function handler(req, res) {
 
     // Call GPT to summarize the content
     const prompt = `Summarize and give me 10 highlights:\n\n${combinedText}`;
-    const openaiResponse = await sendPrompt(prompt);
+    // const openaiResponse = await sendPrompt(prompt);
 
     // Close the browser
     await browser.close();
@@ -86,7 +86,7 @@ export default async function handler(req, res) {
     res.status(200).json({
       combinedText,
       averageRating: averageRating.toFixed(2),
-      gptSummary: openaiResponse,
+      // gptSummary: openaiResponse,
     });
 
   } catch (error) {
